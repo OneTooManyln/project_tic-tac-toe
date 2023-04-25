@@ -1,4 +1,4 @@
-const gameBoard = () => {
+const gameBoard = (() => {
   const board = [];
 
   for (i = 0; i < 3; i++) {
@@ -6,13 +6,20 @@ const gameBoard = () => {
   }
 
   const gridContainer = document.querySelector(".grid-container");
-  board.forEach((item, index) => {
+  board.forEach(() => {
     const grids = document.createElement("div");
     grids.classList.add("grids");
     gridContainer.appendChild(grids);
   });
   return board;
-};
-gameBoard();
+})();
 
-const createPlayer = (name, marker) => ({ name, marker });
+const playGame = (() => {
+  const createPlayer = (name, marker) => ({ name, marker });
+
+  const playerOne = createPlayer("player 1", "o");
+  console.log(playerOne.name);
+
+  const playerTwo = createPlayer("player 2", "x");
+  console.log(playerTwo.name);
+})();
