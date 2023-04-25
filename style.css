@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap");
+
+html {
+  font-family: "Bruno Ace", cursive;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -33,4 +39,9 @@ body {
   border-radius: 5px;
   padding: 20px;
   background-color: rgb(70, 67, 67);
+  display: flex;
+  color: white;
+  font-size: 4rem;
+  justify-content: center;
+  align-items: center;
 }
