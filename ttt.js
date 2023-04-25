@@ -1,9 +1,9 @@
 const gameBoard = (() => {
-  const board = [];
+  const board = ["X", "X", "O"];
 
-  for (i = 0; i < 3; i++) {
+  /*   for (i = 0; i < 3; i++) {
     board.push("");
-  }
+  } */
 
   const gridContainer = document.querySelector(".grid-container");
   board.forEach(() => {
@@ -11,6 +11,7 @@ const gameBoard = (() => {
     grids.classList.add("grids");
     gridContainer.appendChild(grids);
   });
+  console.table(board);
   return board;
 })();
 
