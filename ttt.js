@@ -33,11 +33,22 @@ const gameController = (() => {
   function getMarker(marker) {
     if (marker === "O") {
       markerPicked = "O";
+      choosePlayer();
       console.log("Marker is O");
     } else {
       markerPicked = "X";
+      choosePlayer();
       console.log("Marker is X");
     }
+  }
+
+  let currentPlayer;
+
+  function choosePlayer() {
+    if (markerPicked === "O") {
+      currentPlayer = playerOne;
+      console.log(currentPlayer);
+    } else currentPlayer = playerTwo;
   }
 
   const markerBtn = document.querySelectorAll(".btn");
