@@ -53,11 +53,18 @@ body {
   align-items: center;
 }
 
-.btn {
+.btn,
+.clear-grid {
   padding: 10px 20px;
   border: solid black;
   border-radius: 20px;
   font-size: 1.2rem;
   width: 100px;
   margin-bottom: 10px;
+}
+
+.clear-grid {
+  width: 200px;
+  font-size: 1rem;
+  margin-top: 10px;
 }
