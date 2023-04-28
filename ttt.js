@@ -14,7 +14,14 @@ const gameBoard = (() => {
     gridContainer.appendChild(grids);
   });
   console.table(board);
-  return board;
+
+  const grids = document.querySelectorAll(".grids");
+  grids.forEach((grids) => {
+    grids.addEventListener("click", (e) => {
+      e.currentTarget.innerText = gameController.markerPicked;
+    });
+  });
+  return { board };
 })();
 
 const playGame = (() => {})();
@@ -24,7 +31,6 @@ const gameController = (() => {
 
   const playerOne = createPlayer("player 1", "O");
   console.log(playerOne.name);
-
   const playerTwo = createPlayer("player 2", "X");
   console.log(playerTwo.name);
 
@@ -57,4 +63,10 @@ const gameController = (() => {
       getMarker(e.currentTarget.innerText);
     });
   });
+
+  console.log(markerPicked);
+
+  return { getMarker, markerPicked, currentPlayer, choosePlayer };
 })();
+
+console.log(gameController.markerPicked);
