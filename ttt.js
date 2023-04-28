@@ -1,16 +1,16 @@
 const gameBoard = (() => {
-  const board = ["X", "X", "O", "O", "X", "O", "O", "O", "X"];
+  const board = [];
 
-  /*   for (i = 0; i < 3; i++) {
+  for (i = 0; i < 9; i++) {
     board.push("");
-  } */
+  }
 
   const gridContainer = document.querySelector(".grid-container");
-  board.forEach((item, index) => {
+  board.forEach((item) => {
     const grids = document.createElement("div");
     grids.classList.add("grids");
-    grids.innerText = `${item}`;
-    console.log(`${item} ${index}`);
+    /* grids.innerText = `${item}`; */
+    console.log(`${item}`);
     gridContainer.appendChild(grids);
   });
   console.table(board);
