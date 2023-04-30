@@ -9,7 +9,6 @@ const gameBoard = (() => {
   board.forEach((item) => {
     const grids = document.createElement("div");
     grids.classList.add("grids");
-    /* grids.innerText = `${item}`; */
     console.log(`${item}`);
     gridContainer.appendChild(grids);
   });
@@ -25,12 +24,14 @@ const gameBoard = (() => {
         grids.forEach((grids) => {
           grids.addEventListener("click", (e) => {
             e.currentTarget.innerText = gameController.playerOne.marker;
+            e.currentTarget.style.pointerEvents = "none";
           });
         });
       } else {
         grids.forEach((grids) => {
           grids.addEventListener("click", (e) => {
             e.currentTarget.innerText = gameController.playerTwo.marker;
+            e.currentTarget.style.pointerEvents = "none";
           });
         });
       }
@@ -73,8 +74,6 @@ const gameController = (() => {
     } else currentPlayer = playerTwo;
   }
 
-  console.log(markerPicked);
-
   return {
     getMarker,
     markerPicked,
@@ -84,5 +83,3 @@ const gameController = (() => {
     playerTwo,
   };
 })();
-
-console.log(gameController.markerPicked);
