@@ -21,18 +21,16 @@ const gameBoard = (() => {
     markerBtn.addEventListener("click", (e) => {
       gameController.getMarker(e.currentTarget.innerText);
 
-      if (e.currentTarget.innerText === "X") {
+      if (e.currentTarget.innerText === "O") {
         grids.forEach((grids) => {
           grids.addEventListener("click", (e) => {
-            gameController.marker();
-            e.currentTarget.innerText = "X";
+            e.currentTarget.innerText = gameController.playerOne.marker;
           });
         });
       } else {
         grids.forEach((grids) => {
           grids.addEventListener("click", (e) => {
-            gameController.marker();
-            e.currentTarget.innerText = "O";
+            e.currentTarget.innerText = gameController.playerTwo.marker;
           });
         });
       }
@@ -77,7 +75,14 @@ const gameController = (() => {
 
   console.log(markerPicked);
 
-  return { getMarker, markerPicked, currentPlayer, choosePlayer };
+  return {
+    getMarker,
+    markerPicked,
+    currentPlayer,
+    choosePlayer,
+    playerOne,
+    playerTwo,
+  };
 })();
 
 console.log(gameController.markerPicked);
