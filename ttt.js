@@ -15,12 +15,30 @@ const gameBoard = (() => {
   });
   console.table(board);
 
+  const markerBtn = document.querySelectorAll(".btn");
   const grids = document.querySelectorAll(".grids");
-  grids.forEach((grids) => {
-    grids.addEventListener("click", (e) => {
-      e.currentTarget.innerText = gameController.markerPicked;
+  markerBtn.forEach((markerBtn) => {
+    markerBtn.addEventListener("click", (e) => {
+      gameController.getMarker(e.currentTarget.innerText);
+
+      if (e.currentTarget.innerText === "X") {
+        grids.forEach((grids) => {
+          grids.addEventListener("click", (e) => {
+            gameController.marker();
+            e.currentTarget.innerText = "X";
+          });
+        });
+      } else {
+        grids.forEach((grids) => {
+          grids.addEventListener("click", (e) => {
+            gameController.marker();
+            e.currentTarget.innerText = "O";
+          });
+        });
+      }
     });
   });
+
   return { board };
 })();
 
@@ -56,13 +74,6 @@ const gameController = (() => {
       console.log(currentPlayer);
     } else currentPlayer = playerTwo;
   }
-
-  const markerBtn = document.querySelectorAll(".btn");
-  markerBtn.forEach((markerBtn) => {
-    markerBtn.addEventListener("click", (e) => {
-      getMarker(e.currentTarget.innerText);
-    });
-  });
 
   console.log(markerPicked);
 
