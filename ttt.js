@@ -15,6 +15,8 @@ const gameBoard = (() => {
   console.table(board);
 
   const markerBtn = document.querySelectorAll(".btn");
+  const oButton = document.querySelector(".o");
+  const xButton = document.querySelector(".x");
   const grids = document.querySelectorAll(".grids");
   markerBtn.forEach((markerBtn) => {
     markerBtn.addEventListener("click", (e) => {
@@ -27,6 +29,7 @@ const gameBoard = (() => {
             currentGrid.innerText = gameController.playerOne.marker;
             currentGrid.style.pointerEvents = "none";
             board[index] = gameController.playerOne.marker;
+            xButton.disabled = true;
             console.table(board);
           });
         });
@@ -37,6 +40,7 @@ const gameBoard = (() => {
             currentGrid.innerText = gameController.playerTwo.marker;
             currentGrid.style.pointerEvents = "none";
             board[index] = gameController.playerTwo.marker;
+            oButton.disabled = true;
             console.table(board);
           });
         });
