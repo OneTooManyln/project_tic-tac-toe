@@ -21,17 +21,23 @@ const gameBoard = (() => {
       gameController.getMarker(e.currentTarget.innerText);
 
       if (e.currentTarget.innerText === "O") {
-        grids.forEach((grids) => {
+        grids.forEach((grids, index) => {
           grids.addEventListener("click", (e) => {
-            e.currentTarget.innerText = gameController.playerOne.marker;
-            e.currentTarget.style.pointerEvents = "none";
+            const currentGrid = e.currentTarget;
+            currentGrid.innerText = gameController.playerOne.marker;
+            currentGrid.style.pointerEvents = "none";
+            board[index] = gameController.playerOne.marker;
+            console.table(board);
           });
         });
       } else {
-        grids.forEach((grids) => {
+        grids.forEach((grids, index) => {
           grids.addEventListener("click", (e) => {
-            e.currentTarget.innerText = gameController.playerTwo.marker;
-            e.currentTarget.style.pointerEvents = "none";
+            const currentGrid = e.currentTarget;
+            currentGrid.innerText = gameController.playerTwo.marker;
+            currentGrid.style.pointerEvents = "none";
+            board[index] = gameController.playerTwo.marker;
+            console.table(board);
           });
         });
       }
@@ -69,9 +75,9 @@ const gameController = (() => {
 
   function choosePlayer() {
     if (markerPicked === "O") {
-      currentPlayer = playerOne;
+      this.currentPlayer = playerOne;
       console.log(currentPlayer);
-    } else currentPlayer = playerTwo;
+    } else this.currentPlayer = playerTwo;
   }
 
   return {
