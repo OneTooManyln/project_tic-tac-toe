@@ -23,6 +23,8 @@ const gameBoard = (() => {
       gameController.getMarker(e.currentTarget.innerText);
 
       if (e.currentTarget.innerText === "O") {
+        gameController.currentPlayer = gameController.playerOne;
+        console.log(gameController.currentPlayer);
         grids.forEach((grids, index) => {
           grids.addEventListener("click", (e) => {
             const currentGrid = e.currentTarget;
@@ -36,6 +38,7 @@ const gameBoard = (() => {
         });
       } else {
         grids.forEach((grids, index) => {
+          gameController.currentPlayer = gameController.playerTwo;
           grids.addEventListener("click", (e) => {
             const currentGrid = e.currentTarget;
             currentGrid.innerText = gameController.playerTwo.marker;
