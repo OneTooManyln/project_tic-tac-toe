@@ -31,6 +31,7 @@ const gameBoard = (() => {
             board[index] = gameController.playerOne.marker;
             xButton.disabled = true;
             console.table(board);
+            gameController.declareWinner();
           });
         });
       } else {
@@ -60,6 +61,28 @@ const gameController = (() => {
   console.log(playerOne.name);
   const playerTwo = createPlayer("player 2", "X");
   console.log(playerTwo.name);
+
+  const winningGrids = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+
+  function declareWinner() {
+    winningGrids.forEach((item, index) => {
+      if (
+        gameBoard.board[item[0]] === playerOne.marker &&
+        gameBoard.board[item[1]] === playerOne.marker &&
+        gameBoard.board[item[2]] === playerOne.marker
+      )
+        console.log("Player One wins");
+    });
+  }
 
   let markerPicked;
 
@@ -91,5 +114,6 @@ const gameController = (() => {
     choosePlayer,
     playerOne,
     playerTwo,
+    declareWinner,
   };
 })();
