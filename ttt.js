@@ -91,11 +91,11 @@ const gameController = (() => {
   function declareWinner() {
     winningGrids.forEach((item) => {
       if (
-        gameBoard.board[item[0]] === playerOne.marker &&
-        gameBoard.board[item[1]] === playerOne.marker &&
-        gameBoard.board[item[2]] === playerOne.marker
+        gameBoard.board[item[0]] === this.currentPlayer.marker &&
+        gameBoard.board[item[1]] === this.currentPlayer.marker &&
+        gameBoard.board[item[2]] === this.currentPlayer.marker
       )
-        console.log("Player One wins");
+        console.log(this.currentPlayer.name);
     });
   }
 
