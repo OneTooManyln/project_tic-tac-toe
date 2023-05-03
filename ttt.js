@@ -26,31 +26,10 @@ const gameBoard = (() => {
         gameController.currentPlayer = gameController.playerOne;
         console.log(gameController.currentPlayer);
         xButton.disabled = true;
-        /* grids.forEach((grids, index) => {
-          grids.addEventListener("click", (e) => {
-            const currentGrid = e.currentTarget;
-            currentGrid.innerText = gameController.playerOne.marker;
-            currentGrid.style.pointerEvents = "none";
-            board[index] = gameController.playerOne.marker;
-            console.table(board);
-            gameController.declareWinner();
-          });
-        }); */
       } else {
         gameController.currentPlayer = gameController.playerTwo;
         console.log(gameController.currentPlayer);
         oButton.disabled = true;
-        /* grids.forEach((grids, index) => {
-          grids.addEventListener("click", (e) => {
-            const currentGrid = e.currentTarget;
-            currentGrid.innerText = gameController.playerTwo.marker;
-            currentGrid.style.pointerEvents = "none";
-            board[index] = gameController.playerTwo.marker;
-
-            console.table(board);
-            gameController.declareWinner();
-          });
-        }); */
       }
       grids.forEach((grids, index) => {
         grids.addEventListener("click", (e) => {
@@ -60,6 +39,7 @@ const gameBoard = (() => {
           board[index] = gameController.currentPlayer.marker;
           console.table(board);
           console.log(gameController.currentPlayer);
+          gameController.findNextPlayer();
           gameController.declareWinner();
         });
       });
@@ -91,11 +71,18 @@ const gameController = (() => {
   function declareWinner() {
     winningGrids.forEach((item) => {
       if (
-        gameBoard.board[item[0]] === this.currentPlayer.marker &&
-        gameBoard.board[item[1]] === this.currentPlayer.marker &&
-        gameBoard.board[item[2]] === this.currentPlayer.marker
-      )
-        console.log(this.currentPlayer.name);
+        gameBoard.board[item[0]] === this.playerOne.marker &&
+        gameBoard.board[item[1]] === this.playerOne.marker &&
+        gameBoard.board[item[2]] === this.playerOne.marker
+      ) {
+        console.log(this.playerOne.name);
+      } else if (
+        gameBoard.board[item[0]] === this.playerTwo.marker &&
+        gameBoard.board[item[1]] === this.playerTwo.marker &&
+        gameBoard.board[item[2]] === this.playerTwo.marker
+      ) {
+        console.log(this.playerTwo.name);
+      }
     });
   }
 
@@ -122,6 +109,16 @@ const gameController = (() => {
     } else this.currentPlayer = playerTwo;
   }
 
+  function findNextPlayer() {
+    if (this.currentPlayer === playerOne) {
+      this.currentPlayer = playerTwo;
+      console.log(this.currentPlayer);
+    } else if (this.currentPlayer === playerTwo) {
+      this.currentPlayer = playerOne;
+      console.log(this.currentPlayer);
+    } else console.log("error");
+  }
+
   return {
     getMarker,
     markerPicked,
@@ -130,5 +127,6 @@ const gameController = (() => {
     playerOne,
     playerTwo,
     declareWinner,
+    findNextPlayer,
   };
 })();
