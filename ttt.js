@@ -25,37 +25,49 @@ const gameBoard = (() => {
       if (e.currentTarget.innerText === "O") {
         gameController.currentPlayer = gameController.playerOne;
         console.log(gameController.currentPlayer);
-        grids.forEach((grids, index) => {
+        xButton.disabled = true;
+        /* grids.forEach((grids, index) => {
           grids.addEventListener("click", (e) => {
             const currentGrid = e.currentTarget;
             currentGrid.innerText = gameController.playerOne.marker;
             currentGrid.style.pointerEvents = "none";
             board[index] = gameController.playerOne.marker;
-            xButton.disabled = true;
             console.table(board);
             gameController.declareWinner();
           });
-        });
+        }); */
       } else {
-        grids.forEach((grids, index) => {
-          gameController.currentPlayer = gameController.playerTwo;
+        gameController.currentPlayer = gameController.playerTwo;
+        console.log(gameController.currentPlayer);
+        oButton.disabled = true;
+        /* grids.forEach((grids, index) => {
           grids.addEventListener("click", (e) => {
             const currentGrid = e.currentTarget;
             currentGrid.innerText = gameController.playerTwo.marker;
             currentGrid.style.pointerEvents = "none";
             board[index] = gameController.playerTwo.marker;
-            oButton.disabled = true;
+
             console.table(board);
+            gameController.declareWinner();
           });
-        });
+        }); */
       }
+      grids.forEach((grids, index) => {
+        grids.addEventListener("click", (e) => {
+          const currentGrid = e.currentTarget;
+          currentGrid.innerText = gameController.currentPlayer.marker;
+          currentGrid.style.pointerEvents = "none";
+          board[index] = gameController.currentPlayer.marker;
+          console.table(board);
+          console.log(gameController.currentPlayer);
+          gameController.declareWinner();
+        });
+      });
     });
   });
 
   return { board };
 })();
-
-const playGame = (() => {})();
 
 const gameController = (() => {
   const createPlayer = (name, marker) => ({ name, marker });
@@ -77,7 +89,7 @@ const gameController = (() => {
   ];
 
   function declareWinner() {
-    winningGrids.forEach((item, index) => {
+    winningGrids.forEach((item) => {
       if (
         gameBoard.board[item[0]] === playerOne.marker &&
         gameBoard.board[item[1]] === playerOne.marker &&
