@@ -41,6 +41,7 @@ const gameBoard = (() => {
           console.log(gameController.currentPlayer);
           gameController.findNextPlayer();
           gameController.declareWinner();
+          gameController.declareTie();
         });
       });
     });
@@ -68,6 +69,8 @@ const gameController = (() => {
     [2, 4, 6],
   ];
 
+  let gameWinner;
+
   function declareWinner() {
     winningGrids.forEach((item) => {
       if (
@@ -75,15 +78,28 @@ const gameController = (() => {
         gameBoard.board[item[1]] === this.playerOne.marker &&
         gameBoard.board[item[2]] === this.playerOne.marker
       ) {
-        console.log(this.playerOne.name);
+        this.gameWinner = playerOne;
+        console.log(this.gameWinner);
       } else if (
         gameBoard.board[item[0]] === this.playerTwo.marker &&
         gameBoard.board[item[1]] === this.playerTwo.marker &&
         gameBoard.board[item[2]] === this.playerTwo.marker
       ) {
-        console.log(this.playerTwo.name);
+        this.gameWinner = playerTwo;
+        console.log(this.gameWinner);
       }
+      return gameWinner;
     });
+  }
+
+  function declareTie() {
+    if (
+      this.gameWinner !== playerOne &&
+      this.gameWinner !== playerTwo &&
+      !gameBoard.board.includes("")
+    ) {
+      console.log("its a tie");
+    }
   }
 
   let markerPicked;
@@ -128,5 +144,7 @@ const gameController = (() => {
     playerTwo,
     declareWinner,
     findNextPlayer,
+    gameWinner,
+    declareTie,
   };
 })();
