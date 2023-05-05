@@ -9,6 +9,26 @@
     <title>Tic Tac Toe</title>
   </head>
   <body>
+    <div class="game-settings">
+      <form action="#">
+        <div class="inputs">
+          <label for="1v1">Player VS Player</label>
+          <input type="radio" id="1v1" name="choice" required />
+        </div>
+        <div class="inputs">
+          <label for="ai">Player VS AI</label>
+          <input type="radio" id="ai" name="choice" required />
+        </div>
+      </form>
+      <div class="inputs" id="hide">
+        <label for="player_one_name">Player One Name:</label>
+        <input type="text" id="player_one" name="player_one" required />
+      </div>
+      <div class="inputs" id="hide">
+        <label for="player_two_name">Player Two Name:</label>
+        <input type="text" id="player_two" name="player_two" required />
+      </div>
+    </div>
     <div class="title">
       <h1>Tic Tac Toe</h1>
     </div>
