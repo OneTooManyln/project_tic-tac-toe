@@ -49,6 +49,22 @@ const gameBoard = (() => {
     });
   });
 
+  const aiBtn = document.getElementById("ai");
+  const textInputs = document.querySelectorAll("#hide");
+  const playerBtn = document.getElementById("1v1");
+
+  aiBtn.addEventListener("click", () => {
+    textInputs.forEach((textInputs) => {
+      textInputs.style.display = "none";
+    });
+  });
+
+  playerBtn.addEventListener("click", () => {
+    textInputs.forEach((textInputs) => {
+      textInputs.style.display = "flex";
+    });
+  });
+
   const clearBoard = document.querySelector(".clear-grid");
   clearBoard.addEventListener("click", () => {
     location.reload();
