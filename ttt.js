@@ -1,9 +1,11 @@
 const gameBoard = (() => {
   const board = [];
 
-  for (i = 0; i < 9; i++) {
-    board.push("");
-  }
+  const renderBoard = (() => {
+    for (i = 0; i < 9; i++) {
+      board.push("");
+    }
+  })();
 
   const gridContainer = document.querySelector(".grid-container");
   board.forEach((item) => {
@@ -47,7 +49,12 @@ const gameBoard = (() => {
     });
   });
 
-  return { board };
+  const clearBoard = document.querySelector(".clear-grid");
+  clearBoard.addEventListener("click", () => {
+    location.reload();
+  });
+
+  return { board, renderBoard };
 })();
 
 const gameController = (() => {
