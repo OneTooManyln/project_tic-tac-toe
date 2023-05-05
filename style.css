@@ -16,6 +16,10 @@ body {
   flex-direction: column;
 }
 
+#hide {
+  display: none;
+}
+
 .gameboard {
   padding: 20px;
   padding: 20px;
