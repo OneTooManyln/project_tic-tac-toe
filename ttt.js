@@ -21,6 +21,7 @@ const gameBoard = (() => {
   const player2 = document.querySelector("#player_two");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+    gameController.definePlayers(player1.value, player2.value);
     console.log(player1.value, player2.value);
     form.reset();
     textInputs.forEach((textInputs) => {
@@ -34,7 +35,7 @@ const gameBoard = (() => {
   const grids = document.querySelectorAll(".grids");
   markerBtn.forEach((markerBtn) => {
     markerBtn.addEventListener("click", (e) => {
-      gameController.getMarker(e.currentTarget.innerText);
+      /* gameController.getMarker(e.currentTarget.innerText); */
 
       if (e.currentTarget.innerText === "O") {
         gameController.currentPlayer = gameController.playerOne;
@@ -53,7 +54,7 @@ const gameBoard = (() => {
           board[index] = gameController.currentPlayer.marker;
           console.table(board);
           console.log(gameController.currentPlayer);
-          gameController.findNextPlayer();
+          gameController.findNextPlayer(gameController.currentPlayer);
           gameController.declareWinner();
           gameController.declareTie();
         });
@@ -88,10 +89,15 @@ const gameBoard = (() => {
 const gameController = (() => {
   const createPlayer = (name, marker) => ({ name, marker });
 
-  const playerOne = createPlayer("player 1", "O");
-  console.log(playerOne.name);
-  const playerTwo = createPlayer("player 2", "X");
-  console.log(playerTwo.name);
+  let playerOne;
+  let playerTwo;
+
+  function definePlayers(player1, player2) {
+    this.playerOne = createPlayer(player1, "O");
+    this.playerTwo = createPlayer(player2, "X");
+    console.log(this.playerOne.name);
+    console.log(this.playerTwo.name);
+  }
 
   const winningGrids = [
     [0, 1, 2],
@@ -113,14 +119,14 @@ const gameController = (() => {
         gameBoard.board[item[1]] === this.playerOne.marker &&
         gameBoard.board[item[2]] === this.playerOne.marker
       ) {
-        this.gameWinner = playerOne;
+        this.gameWinner = this.playerOne;
         console.log(this.gameWinner);
       } else if (
         gameBoard.board[item[0]] === this.playerTwo.marker &&
         gameBoard.board[item[1]] === this.playerTwo.marker &&
         gameBoard.board[item[2]] === this.playerTwo.marker
       ) {
-        this.gameWinner = playerTwo;
+        this.gameWinner = this.playerTwo;
         console.log(this.gameWinner);
       }
       return gameWinner;
@@ -160,12 +166,12 @@ const gameController = (() => {
     } else this.currentPlayer = playerTwo;
   }
 
-  function findNextPlayer() {
-    if (this.currentPlayer === playerOne) {
-      this.currentPlayer = playerTwo;
+  function findNextPlayer(player) {
+    if (player === this.playerOne) {
+      this.currentPlayer = this.playerTwo;
       console.log(this.currentPlayer);
-    } else if (this.currentPlayer === playerTwo) {
-      this.currentPlayer = playerOne;
+    } else if (player === this.playerTwo) {
+      this.currentPlayer = this.playerOne;
       console.log(this.currentPlayer);
     } else console.log("error");
   }
@@ -181,5 +187,6 @@ const gameController = (() => {
     findNextPlayer,
     gameWinner,
     declareTie,
+    definePlayers,
   };
 })();
