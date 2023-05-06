@@ -22,6 +22,10 @@ const gameBoard = (() => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     console.log(player1.value, player2.value);
+    form.reset();
+    textInputs.forEach((textInputs) => {
+      textInputs.style.display = "none";
+    });
   });
 
   const markerBtn = document.querySelectorAll(".btn");
