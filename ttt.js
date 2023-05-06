@@ -16,6 +16,14 @@ const gameBoard = (() => {
   });
   console.table(board);
 
+  const form = document.querySelector("form");
+  const player1 = document.querySelector("#player_one");
+  const player2 = document.querySelector("#player_two");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    console.log(player1.value, player2.value);
+  });
+
   const markerBtn = document.querySelectorAll(".btn");
   const oButton = document.querySelector(".o");
   const xButton = document.querySelector(".x");
