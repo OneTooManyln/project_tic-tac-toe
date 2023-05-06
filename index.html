@@ -9,6 +9,11 @@
     <title>Tic Tac Toe</title>
   </head>
   <body>
+    <div class="announce-winner">
+      <div class="one-wins"><h2>Player One Wins!</h2></div>
+      <div class="two-wins"><h2>Player Two Wins!</h2></div>
+      <div class="draw"><h2>It's A Draw</h2></div>
+    </div>
     <div class="title">
       <h1>Tic Tac Toe</h1>
     </div>
@@ -23,16 +28,16 @@
             <label for="ai">Player VS AI</label>
             <input type="radio" id="ai" name="choice" required />
           </div>
-        </form>
-        <div class="inputs" id="hide">
-          <label for="player_one_name">Player One Name:</label>
-          <input type="text" id="player_one" name="player_one" required />
+          <div class="inputs" id="hide">
+            <label for="player_one_name">Player One Name:</label>
+            <input type="text" id="player_one" name="player_one" required />
+          </div>
+          <div class="inputs" id="hide">
+            <label for="player_two_name">Player Two Name:</label>
+            <input type="text" id="player_two" name="player_two" required />
+          </div>
         </div>
-        <div class="inputs" id="hide">
-          <label for="player_two_name">Player Two Name:</label>
-          <input type="text" id="player_two" name="player_two" required />
-        </div>
-      </div>
+      </form>
       <div class="gameboard">
         <div class="button-container">
           <button class="btn x">X</button>
