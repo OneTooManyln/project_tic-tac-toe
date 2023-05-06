@@ -45,6 +45,10 @@ form {
   align-items: center;
 }
 
+#play-game {
+  font-family: inherit;
+}
+
 #hide {
   display: none;
 }
