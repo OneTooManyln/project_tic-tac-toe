@@ -21,14 +21,14 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100px;
+  margin-bottom: 30px;
 }
 
 form {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  height: 70px;
+  height: 80px;
 }
 
 .radio-btns,
@@ -37,6 +37,12 @@ form {
   justify-content: center;
   align-items: center;
   gap: 20px;
+}
+
+.play-game-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #hide {
