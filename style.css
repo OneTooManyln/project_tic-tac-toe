@@ -26,6 +26,16 @@ body {
 
 form {
   display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 70px;
+}
+
+.radio-btns,
+.text-inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
 }
 
@@ -50,8 +60,6 @@ form {
 
 .grid-container {
   padding: 5px;
-  height: 100%;
-  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
