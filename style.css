@@ -47,6 +47,12 @@ form {
 
 #play-game {
   font-family: inherit;
+  border-left: solid red;
+  border-right: solid blue;
+  border-top: solid red;
+  border-bottom: solid blue;
+  border-radius: 20px;
+  padding: 5px;
 }
 
 #hide {
