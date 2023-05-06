@@ -16,6 +16,12 @@ body {
   flex-direction: column;
 }
 
+.game-settings {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 #hide {
   display: none;
 }
