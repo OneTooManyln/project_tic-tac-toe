@@ -19,7 +19,14 @@ body {
 .game-settings {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
+  height: 100px;
+}
+
+form {
+  display: flex;
+  gap: 20px;
 }
 
 #hide {
@@ -83,6 +90,21 @@ body {
   width: 200px;
   font-size: 1rem;
   margin-top: 10px;
+}
+
+.one-wins {
+  display: none;
+  position: absolute;
+}
+
+.two-wins {
+  display: none;
+  position: absolute;
+}
+
+.draw {
+  display: none;
+  position: absolute;
 }
 
 h1 {
