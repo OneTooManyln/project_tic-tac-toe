@@ -134,7 +134,24 @@ form {
 
 .announce-winner {
   display: none;
+  justify-content: center;
   position: absolute;
+  background-color: rgb(41, 41, 41);
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+
+.one-wins {
+  display: none;
+}
+
+.two-wins {
+  display: none;
+}
+
+.draw {
+  display: none;
 }
 
 h1 {
