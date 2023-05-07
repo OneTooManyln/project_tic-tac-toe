@@ -33,6 +33,8 @@ const gameBoard = (() => {
   const oButton = document.querySelector(".o");
   const xButton = document.querySelector(".x");
   const grids = document.querySelectorAll(".grids");
+  const p1Turn = document.querySelector(".p1-turn");
+  const p2Turn = document.querySelector(".p2-turn");
   markerBtn.forEach((markerBtn) => {
     markerBtn.addEventListener("click", (e) => {
       /* gameController.getMarker(e.currentTarget.innerText); */
@@ -41,10 +43,12 @@ const gameBoard = (() => {
         gameController.currentPlayer = gameController.playerOne;
         console.log(gameController.currentPlayer);
         xButton.disabled = true;
+        p1Turn.style.display = "flex";
       } else {
         gameController.currentPlayer = gameController.playerTwo;
         console.log(gameController.currentPlayer);
         oButton.disabled = true;
+        p2Turn.style.display = "flex";
       }
       grids.forEach((grids, index) => {
         grids.addEventListener("click", (e) => {
@@ -54,6 +58,13 @@ const gameBoard = (() => {
           board[index] = gameController.currentPlayer.marker;
           console.table(board);
           console.log(gameController.currentPlayer);
+          if (gameController.currentPlayer === gameController.playerOne) {
+            p2Turn.style.display = "flex";
+            p1Turn.style.display = "none";
+          } else {
+            p1Turn.style.display = "flex";
+            p2Turn.style.display = "none";
+          }
           gameController.findNextPlayer(gameController.currentPlayer);
           gameController.declareWinner();
           gameController.declareTie();
