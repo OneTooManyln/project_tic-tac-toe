@@ -35,6 +35,10 @@ const gameBoard = (() => {
   const grids = document.querySelectorAll(".grids");
   const p1Turn = document.querySelector(".p1-turn");
   const p2Turn = document.querySelector(".p2-turn");
+  const announceWinner = document.querySelector(".announce-winner");
+  const onewins = document.querySelector(".one-wins");
+  const twoWins = document.querySelector(".two-wins");
+  const draw = document.querySelector(".draw");
   markerBtn.forEach((markerBtn) => {
     markerBtn.addEventListener("click", (e) => {
       /* gameController.getMarker(e.currentTarget.innerText); */
@@ -68,6 +72,14 @@ const gameBoard = (() => {
           gameController.findNextPlayer(gameController.currentPlayer);
           gameController.declareWinner();
           gameController.declareTie();
+          if (gameController.gameOver === true) {
+            announceWinner.style.display = "flex";
+            if (gameController.gameWinner === gameController.playerOne) {
+              onewins.style.display = "flex";
+            } else if (gameController.gameWinner === gameController.playerTwo) {
+              twoWins.style.display = "flex";
+            } else draw.style.display = "flex";
+          }
         });
       });
     });
@@ -122,6 +134,7 @@ const gameController = (() => {
   ];
 
   let gameWinner;
+  const gameOver = false;
 
   function declareWinner() {
     winningGrids.forEach((item) => {
@@ -132,6 +145,7 @@ const gameController = (() => {
       ) {
         this.gameWinner = this.playerOne;
         console.log(this.gameWinner);
+        this.gameOver = true;
       } else if (
         gameBoard.board[item[0]] === this.playerTwo.marker &&
         gameBoard.board[item[1]] === this.playerTwo.marker &&
@@ -139,8 +153,8 @@ const gameController = (() => {
       ) {
         this.gameWinner = this.playerTwo;
         console.log(this.gameWinner);
-      }
-      return gameWinner;
+        this.gameOver = true;
+      } else gameWinner = "draw";
     });
   }
 
@@ -151,6 +165,7 @@ const gameController = (() => {
       !gameBoard.board.includes("")
     ) {
       console.log("its a tie");
+      this.gameOver = true;
     }
   }
 
@@ -199,5 +214,6 @@ const gameController = (() => {
     gameWinner,
     declareTie,
     definePlayers,
+    gameOver,
   };
 })();
